@@ -560,8 +560,7 @@ with tabs[3]:
                 texttemplate='%{text:.2f}',
                 hoverongaps=False,
                 colorbar=dict(
-                    title='Corrélation',
-                    titleside='right'
+                    title='Corrélation'
                 )
             ))
             
