@@ -270,7 +270,7 @@ with tabs[1]:
     elif model_choice == "LightGBM":
         predictions_df = predictions_lightgbm
     else:
-        predictions_df = predictions_catboost
+        predictions_df = predictions_xgboost
     
     if not predictions_df.empty:
         # Obtention des labels uniques
