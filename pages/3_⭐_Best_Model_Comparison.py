@@ -4,7 +4,6 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.metrics import confusion_matrix
-import base64
 
 # Configuration de la page
 st.set_page_config(
@@ -213,14 +212,6 @@ def plot_country_error_comparison(errors_dict, same_country_errors_dict):
     
     return fig
 
-def create_download_link(file_path, file_name):
-    """Crée un lien de téléchargement pour un fichier pkl."""
-    with open(file_path, "rb") as f:
-        bytes_data = f.read()
-    b64 = base64.b64encode(bytes_data).decode()
-    href = f'<a href="data:file/pkl;base64,{b64}" download="{file_name}"><button style="background-color:#4CAF50; color:white; padding:10px 24px; border:none; border-radius:4px; cursor:pointer;">Télécharger {file_name}</button></a>'
-    return href
-
 # En-tête principal avec logo et titre
 col_logo, col_title = st.columns([2, 5])
 with col_logo:
@@ -246,21 +237,21 @@ with tabs[0]:
     de classification entre ligues d'un même pays.
     """)
     
-    # Section pour les boutons de téléchargement
-    st.markdown("### 📥 Téléchargement des modèles")
+    # Section pour les liens des repos
+    st.markdown("### 📚 Accès aux modèles")
 
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown(create_download_link("pickle/lightgbm_optimized.pkl", "lightgbm_optimized.pkl"), unsafe_allow_html=True)
+        st.markdown("[🔗 Repo LightGBM](https://github.com/heretounderstand/football_league_classification/modeles_entraines/lightgbm_optimized.pkl)", unsafe_allow_html=False)
         st.caption("Modèle LightGBM optimisé")
         
     with col2:
-        st.markdown(create_download_link("pickle/catboost_optimized.pkl", "catboost_optimized.pkl"), unsafe_allow_html=True)
+        st.markdown("[🔗 Repo CatBoost](https://github.com/heretounderstand/football_league_classification/modeles_entraines/catboost_optimized.pkl)", unsafe_allow_html=False)
         st.caption("Modèle CatBoost optimisé")
         
     with col3:
-        st.markdown(create_download_link("pickle/xgboost_optimized.pkl", "xgboost_optimized.pkl"), unsafe_allow_html=True)
+        st.markdown("[🔗 Repo XGBoost](https://github.com/heretounderstand/football_league_classification/modeles_entraines/xgboost_optimized.pkl)", unsafe_allow_html=False)
         st.caption("Modèle XGBoost optimisé")
     
     st.markdown('</div>', unsafe_allow_html=True)
